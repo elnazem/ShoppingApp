@@ -1,37 +1,40 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
+import { FlatList, ImageSourcePropType, SafeAreaView, Text, View } from "react-native";
+import TopNav from "@/components/TopNav";
+import ProductItem from "@/components/ProductItem";
+import BottomNav from "@/components/BottomNav";
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
+  type itemType={
+    key:string,
+    src:ImageSourcePropType|undefined
   }
-
+  const items :itemType[]=[
+    {"key":"1", "src":require("../assets/images/1.avif")},
+    {"key":"2", "src":require("../assets/images/2.avif")},
+    {"key":"3", "src":require("../assets/images/3.avif")},
+    {"key":"4", "src":require("../assets/images/4.avif")}
+  ]
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
+    <SafeAreaView>
+
+      {/* top nav */}
+      <TopNav />
+
+      {/* num of items */}
+      <View className="flex items-center">
+        <Text className="text-xs text-gray-400 py-4">60 items found</Text>
+      </View>
+      
+      {/*items */}
+
+      <View className="flex-row items-center justify-between px-4">
+        <FlatList data={items}
+              keyExtractor={(item) => item.key}
+          renderItem={({item}) => <ProductItem source={item.src}/>}
+          numColumns={2}
+          />
+      </View>
+
+      <BottomNav/>
+    </SafeAreaView>
   );
 }
