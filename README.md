@@ -3,6 +3,7 @@ React native simple shopping app
 <img width="383" alt="image" src="https://github.com/user-attachments/assets/d718ecf0-6847-4c2d-9452-d5948349b62b">
 
 you can find the design file on figma from the link below
+
 https://www.figma.com/design/HKnNISFjPgsvA74Rgtbdv6/Project?node-id=1204-12&t=3yEqoWPbqGNajnhR-1
 
 # Welcome to your Expo app 👋
