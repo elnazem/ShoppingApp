@@ -1,3 +1,8 @@
+<img width="356" alt="image" src="https://github.com/user-attachments/assets/1cd14e43-f372-44dc-83e8-85a12d26aa3c">
+
+you can find the design file on figma from the link below
+https://www.figma.com/design/HKnNISFjPgsvA74Rgtbdv6/Project?node-id=1204-12&t=3yEqoWPbqGNajnhR-1
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
